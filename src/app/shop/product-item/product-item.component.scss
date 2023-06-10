@@ -1,0 +1,31 @@
+.product-card {
+  background-color: rgb(252, 247, 235);
+}
+
+.product-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: rgba(15, 68, 76, 1)
+}
+
+.product-price {
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: rgba(94, 141, 131, 1)
+}
+.status {
+  font-size: 0.7rem;
+  color: rgba(69, 69, 69, 1)
+}
+
+.product-image {
+  width: 100%;
+  object-fit: cover;
+}
+.product-card.zoom-effect img {
+  transition: transform 0.3s ease-in-out;
+}
+
+.product-card.zoom-effect:hover img {
+  transform: scale(1.05);
+}

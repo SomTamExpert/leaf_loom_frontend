@@ -1,0 +1,25 @@
+.sort-select option {
+  background-color: rgb(252, 247, 235);
+}
+
+:host ::ng-deep .pagination-page.page-item.active .page-link {
+  background-color: rgb(0, 0, 0);
+  color: white; /* You can adjust the text color as needed */
+}
+:host ::ng-deep .pagination-page.page-item:not(.active) .page-link {
+  color: black;
+  background-color: rgb(252, 247, 235);
+  border: 1px solid rgb(0, 0, 0);
+}
+:host ::ng-deep .pagination-prev .page-link,
+:host ::ng-deep .pagination-next .page-link,
+:host ::ng-deep.pagination-first .page-link,
+:host ::ng-deep .pagination-last .page-link {
+  color: black;
+  background-color: rgb(252, 247, 235);
+  border: 1px solid rgb(0, 0, 0);
+}
+ .sort-select option {
+  background-color: rgb(252, 247, 235);
+  color: black;
+}

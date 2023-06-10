@@ -1,6 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
+$input-color : black;
+$input-group-addon-color : black;
+$form-select-color: black;
+$form-select-bg: rgb(252, 247, 235);
+$form-select-color: black;
+$form-select-indicator-color: black;
+$form-select-border-color: black;
+$input-border-color: black;
+$form-select-focus-border-color: black;
+$form-select-border-color: black;
 
-/* Importing Bootstrap SCSS file. */
+  /* Importing Bootstrap SCSS file. */
 @import "bootstrap/scss/bootstrap";
 
 /* Importing Datepicker SCSS file. */

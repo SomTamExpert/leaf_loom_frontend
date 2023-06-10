@@ -1,7 +1,6 @@
 import {AfterViewInit, Component, ElementRef, OnInit} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {Product} from "./models/products";
-import {Pagination} from "./models/Pagination";
+import {Product} from "./shared/models/products";
+
 
 @Component({
   selector: 'app-root',
@@ -10,28 +9,16 @@ import {Pagination} from "./models/Pagination";
 })
 export class AppComponent implements OnInit, AfterViewInit {
   title = "Leaf and Loom";
-  products: Product[] = [];
 
-  constructor(private http: HttpClient, private elementRef: ElementRef) {
+  constructor(private elementRef: ElementRef) {
   }
+
+  ngOnInit(): void {
+  }
+
 
   ngAfterViewInit() {
     this.elementRef.nativeElement.ownerDocument
       .body.style.backgroundColor = '#FCF7EB'
-  }
-
-  ngOnInit(): void {
-    this.http.get<Pagination<Product[]>>('https://localhost:5001/api/products').subscribe({
-      next: (response) => {
-        this.products = response.data
-        console.log(response)
-      },
-      error: (error) => {
-        console.log(error)
-      },
-      complete: () => {
-        console.log('complete')
-      }
-    })
   }
 }

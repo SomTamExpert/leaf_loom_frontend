@@ -1,0 +1,11 @@
+<div class="card h-100 mb-4 product-card text-center zoom-effect" style="border-color: transparent;" *ngIf="product">
+  <span *ngIf="false" class="fw-bold status">Sold out</span>
+  <img class="card-img-top product-image"
+       src="{{product.images}}"
+       alt="{{product.name}}"
+       data-holder-rendered="true">
+  <div class="card-body text-center fw-bolder">
+    <p class="card-title product-title">{{product.name}}</p>
+    <p class="card-text product-price text-decoration-none">From {{product.price | currency: 'CHF '}}</p>
+  </div>
+</div>
