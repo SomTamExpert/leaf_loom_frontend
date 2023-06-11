@@ -1,6 +1,21 @@
 <div *ngIf="product" class="row">
   <div class="col-6">
     <img [src]="imgUrl" class="img-fluid w-100" alt="{{product.name}}">
+    <div class="carousel carousel-dark slide">
+      <div class="carousel-inner">
+        <div class="carousel-item active" *ngFor="let color of getProductImages(product)">
+          <img [src]="product.images[color]" class="d-block pe-2" width="220px" alt="{{ product.name }}">
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
   </div>
 
   <div class="col-5">
@@ -19,7 +34,8 @@
     <div class="mt-4">
       <span class="w-100 product-title">Pot Color: Leaf & Loom Basic</span>
       <div class="d-flex justify-content-evenly align-items-center mt-3">
-        <div *ngFor="let pot of pots" class="pot-colors" [style.background-color]="'#' + pot.value" style="cursor: pointer" (click)="onSelectPot(pot.color)"></div>
+        <div *ngFor="let pot of pots" class="pot-colors" [style.background-color]="'#' + pot.value"
+             style="cursor: pointer" (click)="onSelectPot(pot.color)"></div>
       </div>
     </div>
 
@@ -57,13 +73,14 @@
     </div>
   </div>
 
-  <div class="col-11 my-5">
+  <div class="col-11 my-5" *ngIf="product">
     <h2 class="text-center my-4 product-title">You may also be interested in...</h2>
     <div class="row row-cols-4 g-3">
-      <div class="col" *ngFor="let product of randomProducts">
-        <div *ngIf="product" routerLink="/shop/{{product.id}}">
+      <div class="col" *ngFor="let product of randomProducts" (click)="redirectToShop(product.id)">
+        <div>
           <div class="image-container">
-            <img class="product-image product-card" src="{{product.images}}" alt="{{product.name}}" data-holder-rendered="true">
+            <img class="product-image product-card" src="{{product.images}}" alt="{{product.name}}"
+                 data-holder-rendered="true">
             <div class="image-overlay">
               <div>
                 <p class="card-title">{{product.name}}</p>
@@ -73,7 +90,7 @@
           </div>
         </div>
       </div>
-  </div>
+    </div>
   </div>
 
 </div>

@@ -20,7 +20,8 @@ import {RouterLink} from "@angular/router";
     RouterLink
   ],
   exports: [
-    ShopComponent
+    ShopComponent,
+    ProductDetailsComponent
   ]
 })
 export class ShopModule {

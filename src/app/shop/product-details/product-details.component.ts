@@ -1,34 +1,39 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ShopService} from "../shop.service";
 import {Product} from "../../shared/models/products";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {Pot} from "../../shared/models/pot";
 import {ShopParams} from "../../shared/models/shopParams";
+import {Subscription} from "rxjs";
 @Component({
   selector: 'app-product-details',
   templateUrl: './product-details.component.html',
   styleUrls: ['./product-details.component.scss']
 })
-export class ProductDetailsComponent implements OnInit {
+export class ProductDetailsComponent implements OnInit, OnDestroy {
   product?: Product;
   pots: Pot[] = [];
   imgUrl: string = '';
   products: Product[] = [];
-
+  productId: number = 0;
+  paramMapSubscription: Subscription = new Subscription();
   randomProducts: Product[] = [];
   shopParams: ShopParams = new ShopParams();
   totalCount = 0;
-  constructor(private shopService: ShopService, private activatedRoute: ActivatedRoute) {
+  constructor(private shopService: ShopService, private activatedRoute: ActivatedRoute, private router: Router) {
   }
 
   public ngOnInit(): void {
-    this.loadProduct();
-    this.loadPots();
-    this.getProducts();
+    this.paramMapSubscription = this.activatedRoute.paramMap.subscribe((params) => {
+      this.productId = Number(params.get('id'));
+      this.loadProduct(this.productId.toString());
+      this.loadPots();
+      this.getProducts();
+    });
+
   }
 
-  private loadProduct(): void {
-    const id = Number(this.activatedRoute.snapshot.paramMap.get('id'));
+  private loadProduct( id: string): void {
     if (id) {
       this.shopService.getProduct(+id).subscribe(product => {
         this.product = product;
@@ -46,7 +51,6 @@ export class ProductDetailsComponent implements OnInit {
         this.shopParams.pageSize = response.pageSize;
         this.totalCount = response.count;
         this.randomProducts = this.getRandomProducts(this.products);
-        console.log(this.products)
       },
       error: (error) => {
         console.log(error)
@@ -77,5 +81,20 @@ export class ProductDetailsComponent implements OnInit {
       randomProducts.push(products[index]);
     }
     return randomProducts;
+  }
+
+  getProductImages(product: any): string[] {
+    if (product && product.images) {
+      return Object.keys(product.images).filter(key => key !== 'id');
+    }
+    return [];
+  }
+
+  ngOnDestroy(): void {
+    this.paramMapSubscription.unsubscribe();
+  }
+
+  redirectToShop(productId: number): void {
+    this.router.navigate(['/shop', productId]);
   }
 }
