@@ -1,11 +1,11 @@
 <div *ngIf="product" class="row">
   <div class="col-6">
-    <img [src]="product.images" class="img-fluid w-100" alt="{{product.name}}">
+    <img [src]="imgUrl" class="img-fluid w-100" alt="{{product.name}}">
   </div>
 
   <div class="col-5">
     <div class="mt-5">
-      <h2>{{product.name}}</h2>
+      <h1>{{product.name}}</h1>
       <p class="product-price ">{{product.price | currency: 'CHF '}}</p>
     </div>
 
@@ -19,10 +19,7 @@
     <div class="mt-4">
       <span class="w-100 product-title">Pot Color: Leaf & Loom Basic</span>
       <div class="d-flex justify-content-evenly align-items-center mt-3">
-        <div class="pot-colors" style="background-color: rgba(69, 69, 69, 1);"></div>
-        <div class="pot-colors" style="background-color: rgba(71, 43, 28, 1);"></div>
-        <div class="pot-colors" style="background-color: rgba(117, 79, 115, 1);"></div>
-        <div class="pot-colors" style="background-color: rgba(178, 176, 169, 1);"></div>
+        <div *ngFor="let pot of pots" class="pot-colors" [style.background-color]="'#' + pot.value" style="cursor: pointer" (click)="onSelectPot(pot.color)"></div>
       </div>
     </div>
 
@@ -46,7 +43,7 @@
 
     <div class="mt-3">
       <h3 class="product-description-title">Cultivation and Nurturing</h3>
-      <div class="product-description">{{product.description}}</div>
+      <div class="product-description">{{product.care}}</div>
     </div>
 
     <div class="mt-3">
@@ -58,8 +55,25 @@
         <li>plant care instructions</li>
       </ul>
     </div>
-
   </div>
 
+  <div class="col-11 my-5">
+    <h2 class="text-center my-4 product-title">You may also be interested in...</h2>
+    <div class="row row-cols-4 g-3">
+      <div class="col" *ngFor="let product of randomProducts">
+        <div *ngIf="product" routerLink="/shop/{{product.id}}">
+          <div class="image-container">
+            <img class="product-image product-card" src="{{product.images}}" alt="{{product.name}}" data-holder-rendered="true">
+            <div class="image-overlay">
+              <div>
+                <p class="card-title">{{product.name}}</p>
+                <p class="card-text"> {{product.price | currency: 'CHF '}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+  </div>
 
 </div>

@@ -20,7 +20,6 @@ export class ShopComponent implements OnInit {
     {name: 'Price: Descending', value: 'priceDesc'}
   ];
   totalCount = 0;
-
   constructor(private shopService: ShopService) {
   }
 
