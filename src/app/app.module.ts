@@ -8,6 +8,9 @@ import {NgOptimizedImage} from "@angular/common";
 import {HttpClientModule} from "@angular/common/http";
 import {CoreModule} from "./core/core.module";
 import {ShopModule} from "./shop/shop.module";
+import {HomeModule} from "./home/home.module";
+import {ContactModule} from "./contact/contact.module";
+import {MasteryModule} from "./mastery/mastery.module";
 
 @NgModule({
   declarations: [
@@ -20,7 +23,10 @@ import {ShopModule} from "./shop/shop.module";
     NgOptimizedImage,
     HttpClientModule,
     CoreModule,
-    ShopModule
+    ShopModule,
+    HomeModule,
+    ContactModule,
+    MasteryModule
   ],
   providers: [],
   bootstrap: [AppComponent]

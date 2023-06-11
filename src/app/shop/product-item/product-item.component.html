@@ -1,4 +1,4 @@
-<div class="card h-100 mb-4 product-card text-center zoom-effect" style="border-color: transparent;" *ngIf="product">
+<div class="card h-100 mb-4 product-card text-center zoom-effect" style="border-color: transparent;" *ngIf="product" routerLink="/shop/{{product.id}}">
   <span *ngIf="false" class="fw-bold status">Sold out</span>
   <img class="card-img-top product-image"
        src="{{product.images}}"
