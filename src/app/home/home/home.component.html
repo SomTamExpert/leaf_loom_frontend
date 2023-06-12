@@ -1,1 +1,108 @@
-<p>home works!</p>
+<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+            aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+            aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+            aria-label="Slide 3"></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active" *ngFor="let item of homeGalleryPictures">
+      <img [src]="item.src" alt="...">
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+<h1 class="text-center home-title text-uppercase">Become a self-assured plant enthusiast </h1>
+<div class="row">
+  <div class="col-3 mx-auto text-center">
+    <div class="my-4">
+      <h3 class="home-subtitle">Voted the top plant retailer in Switzerland</h3>
+      <i class="fa fa-trophy fa-4x py-2"></i>
+      <p>Our selection of plants is tailored to complement your lifestyle</p>
+    </div>
+  </div>
+  <div class="col-3 mx-auto text-center">
+    <div class="my-4">
+      <h3 class="home-subtitle">Sustainable Philosophy</h3>
+      <i class="fa fa-envira fa-4x py-2"></i>
+      <p>We cultivate long-lasting relationships between you and your plants.</p>
+    </div>
+  </div>
+  <div class="col-3 mx-auto text-center">
+    <div class="my-4">
+      <h3 class="home-subtitle">Plant Service in the entire country</h3>
+      <i class="fa fa-truck fa-4x py-2"></i>
+      <p>Meticulously packaged plants right to your doorstep.</p>
+    </div>
+  </div>
+</div>
+<div class="row justify-content-between">
+  <div class="col-11 my-5 mx-auto">
+    <div class="row d-flex">
+      <div class="col mx-auto" *ngFor="let item of navigationPictures" [routerLink]="item.link">
+        <div>
+          <div class="image-container mx-auto">
+            <img class="product-image product-card" src="{{item.src}}" alt="{{item.title}}" data-holder-rendered="true">
+            <div class="image-overlay d-flex justify-content-end align-items-end">
+              <div>
+                <h2 class="card-title fw-normal">{{item.title}}</h2>
+                <p class="card-text">{{item.text}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row bundle-set-section">
+  <h3 class="text-center home-subtitle">We have a meticulously curated collection of plant for you to choose from</h3>
+  <h1 class="text-center fw-semibold fs-1">Start your plant journey with our exceptional starter package</h1>
+</div>
+<div *ngIf="bundleProduct" class="row">
+  <div class="col-6">
+    <img [src]="bundleProduct.images.grey" class="img-fluid w-100" alt="{{bundleProduct.name}}">
+  </div>
+
+  <div class="col-5 bundle-set-details">
+    <div class="mt-5">
+      <h1>{{bundleProduct.name}}</h1>
+      <div class="product-description">{{bundleProduct.description}}</div>
+    </div>
+
+    <div class="mt-4 product-title"><span class="w-100">Shipping or Pickup</span>
+      <div class="d-flex align-items-center justify-content-between mt-3">
+        <button class="bg-black text-white text-uppercase py-1 px-5" style="width:45%">Add to Cart</button>
+        <button class="bg-black text-white text-uppercase py-1 px-5" style="width:45%">Pick Up</button>
+      </div>
+    </div>
+
+    <div class="mt-4">
+      <span class="w-100 product-title">Quantity</span>
+      <div class="d-flex justify-content-start align-items-center mt-3">
+        <button class="bg-black text-white square-button">+</button>
+        <div class="bg-black text-white square-button d-flex align-items-center justify-content-center">1</div>
+        <button class="bg-black text-white square-button">—</button>
+      </div>
+    </div>
+
+    <div class="mt-5">
+      <button class="bg-black text-white text-uppercase w-100 py-1 px-5">{{bundleProduct.price | currency: "CHF "}}
+        Add to Cart
+      </button>
+    </div>
+
+    <div class="mt-4 product-title" routerLink="/shop/{{bundleProduct.id}}">
+      <a class="link-opacity-75-hover link-dark" style="cursor:pointer;">Product Details</a>
+    </div>
+  </div>
+</div>

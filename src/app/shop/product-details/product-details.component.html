@@ -73,7 +73,7 @@
     </div>
   </div>
 
-  <div class="col-11 my-5" *ngIf="product">
+  <div class="col-11 my-5 mx-auto" *ngIf="product">
     <h2 class="text-center my-4 product-title">You may also be interested in...</h2>
     <div class="row row-cols-4 g-3">
       <div class="col" *ngFor="let product of randomProducts" (click)="redirectToShop(product.id)">
