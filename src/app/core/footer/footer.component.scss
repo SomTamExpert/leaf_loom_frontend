@@ -1,0 +1,44 @@
+#logo {
+  font-size: 3rem;
+  color: white;
+}
+
+.submenu {
+  display: none;
+}
+
+.text-link:hover {
+  color: rgb(94, 141, 131) !important;
+}
+
+.cart-no {
+  position: absolute;
+  min-height: 25px;
+  min-width: 25px;
+  background-color: #FF8F52;
+  color: white;
+  border-radius: 50%;
+  text-align: center;
+  top: -12px;
+  right: 32px;
+}
+
+.footer-text {
+  color: white;
+  font-size: 1.3rem;
+  font-weight: 300;
+}
+
+.footer-title {
+  color: white;
+  font-size: 2rem;
+}
+
+.footer-contact {
+  margin-bottom: 0.25rem; /* Adjust the margin as desired */
+  line-height: 1.2; /* Adjust the line height as desired */
+}
+
+.footer-social {
+  max-width: 18rem;
+}
