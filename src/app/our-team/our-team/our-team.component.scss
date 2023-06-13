@@ -1,0 +1,36 @@
+.carousel {
+  width: 100%;
+  margin-top: 0;
+  overflow: hidden;
+}
+
+.carousel-inner {
+  width: 100%;
+}
+
+.carousel-item img {
+  width: 100%;
+  max-height: 80vh; /* Adjust the maximum height as per your preference */
+  object-fit: cover;
+  transform: scale(1.1); /* Adjust the scaling factor as needed */
+  margin-top: -10%; /* Adjust the negative margin as needed */
+}
+
+.story-title {
+  color: rgba(15, 68, 76, 1);
+  font-weight: 600;
+}
+
+.read-more-link {
+  color: rgba(94, 141, 131, 1);
+  font-weight: 600;
+}
+
+.no-underline {
+  text-decoration: none !important;
+}
+
+.small-line-height {
+  margin-bottom: 0.25rem;
+  line-height: 1.2;
+}

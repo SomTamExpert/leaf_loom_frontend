@@ -11,6 +11,7 @@ import {ShopModule} from "./shop/shop.module";
 import {HomeModule} from "./home/home.module";
 import {ContactModule} from "./contact/contact.module";
 import {MasteryModule} from "./mastery/mastery.module";
+import {OurTeamModule} from "./our-team/our-team.module";
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import {MasteryModule} from "./mastery/mastery.module";
     ShopModule,
     HomeModule,
     ContactModule,
-    MasteryModule
+    MasteryModule,
+    OurTeamModule
   ],
   providers: [],
   bootstrap: [AppComponent]
