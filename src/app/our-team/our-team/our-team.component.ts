@@ -14,6 +14,8 @@ export class OurTeamComponent implements OnInit {
   public teamMembers: { src: string, name: string, color: string, role: string, description: string }[] = []
 
   public ourBosses = {src: 'assets/images/our_bosses.png'};
+
+  public plantMasteryBackground = {src: 'assets/images/plant_mastery_1.png'};
   constructor() {
   }
 
