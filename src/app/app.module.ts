@@ -12,6 +12,8 @@ import {HomeModule} from "./home/home.module";
 import {ContactModule} from "./contact/contact.module";
 import {MasteryModule} from "./mastery/mastery.module";
 import {OurTeamModule} from "./our-team/our-team.module";
+import { ImprintComponent } from './imprint/imprint/imprint.component';
+import {ImprintModule} from "./imprint/imprint.module";
 
 @NgModule({
   declarations: [
@@ -28,7 +30,8 @@ import {OurTeamModule} from "./our-team/our-team.module";
     HomeModule,
     ContactModule,
     MasteryModule,
-    OurTeamModule
+    OurTeamModule,
+    ImprintModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
