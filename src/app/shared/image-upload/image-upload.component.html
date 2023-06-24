@@ -1,14 +1,20 @@
-<div class="my-4">
-  <div class="row d-flex justify-content-between">
-    <div class="col-8">
+<div class="my-4" (drop)="handleDrop($event)" (dragover)="handleDragOver($event)" (dragleave)="handleDragLeave($event)">
+  <div class="row d-flex justify-content-between w-100">
+    <div class="col-12 text-center">
       <label class="btn btn-default p-0 text-uppercase">
-        <input type="file" accept="image/*" (change)="selectFile($event)"/>
+        <input type="file" accept="image/*" (change)="selectFile($event)" style="display: none"/>
+        Drag & drop or click here to upload an image
       </label>
     </div>
   </div>
 
-  <div>
-    <img [src]="preview" class="preview mt-3" width="200px">
+  <div class="image-container mt-4">
+    <button *ngIf="preview" type="button" class="btn-close" (click)="resetComponent()"></button>
+    <div class="image-content">
+      <img [src]="preview" class="preview" *ngIf="preview">
+      <div class="drag-overlay" *ngIf="isDragging">
+        Drop here to upload
+      </div>
+    </div>
   </div>
-
 </div>
