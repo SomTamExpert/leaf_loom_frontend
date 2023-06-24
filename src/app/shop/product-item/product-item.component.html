@@ -1,7 +1,7 @@
 <div class="card h-100 mb-4 product-card text-center zoom-effect" style="border-color: transparent;" *ngIf="product" routerLink="/shop/{{product.id}}">
   <span *ngIf="false" class="fw-bold status">Sold out</span>
   <img class="card-img-top product-image"
-       src="{{product.images}}"
+       [src]="product.images"
        alt="{{product.name}}"
        data-holder-rendered="true">
   <div class="card-body text-center fw-bolder">

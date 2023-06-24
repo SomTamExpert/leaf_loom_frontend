@@ -1,5 +1,4 @@
 import {AfterViewInit, Component, ElementRef, OnInit} from '@angular/core';
-import {Product} from "./shared/models/products";
 
 
 @Component({

@@ -1,10 +1,10 @@
 <div *ngIf="product" class="row">
-  <div class="col-6">
+  <div class="col-6 ">
     <img [src]="imgUrl" class="img-fluid w-100" alt="{{product.name}}">
-    <div class="carousel carousel-dark slide">
+    <div class="carousel carousel-dark slide  mx-auto my-auto w-75">
       <div class="carousel-inner">
         <div class="carousel-item active" *ngFor="let color of getProductImages(product)">
-          <img [src]="product.images[color]" class="d-block pe-2" width="220px" alt="{{ product.name }}">
+          <img [src]="product.images[color]" class="m-4" width="220px" alt="{{ product.name }}">
         </div>
       </div>
       <button class="carousel-control-prev" type="button" data-bs-slide="prev">
@@ -71,8 +71,12 @@
         <li>plant care instructions</li>
       </ul>
     </div>
+    <app-product-review-form [productId]="product.id"></app-product-review-form>
   </div>
+<div class=" mx-auto my-5">
+  <app-product-review></app-product-review>
 
+</div>
   <div class="col-11 my-5 mx-auto" *ngIf="product">
     <h2 class="text-center my-4 product-title">You may also be interested in...</h2>
     <div class="row row-cols-4 g-3">
