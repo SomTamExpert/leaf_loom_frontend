@@ -6,18 +6,18 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   styleUrls: ['./image-upload.component.scss']
 })
 export class ImageUploadComponent implements OnInit {
-  currentFile?: File;
-  preview = '';
+  currentFiles: File[] = [];
+  previews: string[] = [];
   isDragging = false;
-  @Output() fileInputChanged: EventEmitter<File> = new EventEmitter<File>();
+  @Output() filesInputChanged: EventEmitter<File[]> = new EventEmitter<File[]>();
 
   constructor() {}
 
   ngOnInit(): void {}
 
-  selectFile(event: any): void {
+  selectFiles(event: any): void {
     if (event.target.files) {
-      this.handleFileChange(event.target.files[0]);
+      this.handleFilesChange(event.target.files);
     }
   }
 
@@ -25,7 +25,7 @@ export class ImageUploadComponent implements OnInit {
     event.preventDefault();
     this.isDragging = false;
     if (event.dataTransfer?.files && event.dataTransfer.files.length > 0) {
-      this.handleFileChange(event.dataTransfer.files[0]);
+      this.handleFilesChange(event.dataTransfer.files);
     }
   }
 
@@ -39,19 +39,26 @@ export class ImageUploadComponent implements OnInit {
     this.isDragging = false;
   }
 
-  private handleFileChange(file: File): void {
-    this.currentFile = file;
-    this.fileInputChanged.emit(file);
-    const reader = new FileReader();
-    reader.onload = (e: any) => {
-      this.preview = e.target.result;
-    };
-    reader.readAsDataURL(file);
+  private handleFilesChange(files: FileList): void {
+    this.currentFiles = [];
+    this.previews = [];
+
+    for (let i = 0; i < files.length; i++) {
+      const file = files[i];
+      this.currentFiles.push(file);
+
+      const reader = new FileReader();
+      reader.onload = (e: any) => {
+        this.previews[i] = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+
+    this.filesInputChanged.emit(this.currentFiles);
   }
 
-  public resetComponent(): void {
-    this.currentFile = undefined;
-    this.preview = '';
-    this.isDragging = false;
+  removeImage(index: number): void {
+    this.previews.splice(index, 1);
+    this.currentFiles.splice(index, 1);
   }
 }

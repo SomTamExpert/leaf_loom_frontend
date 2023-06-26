@@ -6,5 +6,6 @@ export interface Review {
   author: string
   productId: number
   imageUrl: string
+  imageUrl2: string
   date: string
 }

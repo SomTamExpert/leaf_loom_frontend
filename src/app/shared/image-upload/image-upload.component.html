@@ -2,19 +2,21 @@
   <div class="row d-flex justify-content-between w-100">
     <div class="col-12 text-center">
       <label class="btn btn-default p-0 text-uppercase">
-        <input type="file" accept="image/*" (change)="selectFile($event)" style="display: none"/>
-        Drag & drop or click here to upload an image
+        <input type="file" accept="image/*" multiple (change)="selectFiles($event)" style="display: none" />
+        Drag & drop or click here to upload images
       </label>
     </div>
   </div>
 
   <div class="image-container mt-4">
-    <button *ngIf="preview" type="button" class="btn-close" (click)="resetComponent()"></button>
-    <div class="image-content">
-      <img [src]="preview" class="preview" *ngIf="preview">
-      <div class="drag-overlay" *ngIf="isDragging">
-        Drop here to upload
+    <ng-container *ngFor="let preview of previews; let i = index">
+      <button type="button" class="btn-close" (click)="removeImage(i)"></button>
+      <div class="image-content">
+        <img [src]="preview" class="preview" *ngIf="preview" />
+        <div class="drag-overlay" *ngIf="isDragging">
+          Drop here to upload
+        </div>
       </div>
-    </div>
+    </ng-container>
   </div>
 </div>
