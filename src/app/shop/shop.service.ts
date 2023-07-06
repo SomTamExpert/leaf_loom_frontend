@@ -6,6 +6,7 @@ import {Type} from "../shared/models/type";
 import {Pot} from "../shared/models/pot";
 import {Observable} from "rxjs";
 import {ShopParams} from "../shared/models/shopParams";
+import {Review} from "../shared/models/reviews";
 
 @Injectable({
   providedIn: 'root'
@@ -40,6 +41,13 @@ export class ShopService {
 
   getPots(): Observable<Pot[]> {
     return this.http.get<Pot[]>(this.baseurl + 'products/pots');
+  }
+  getReviewsByProductsId(id: number): Observable<Pagination<Review[]>> {
+    return this.http.get<Pagination<Review[]>>(this.baseurl + 'products/reviews?productId=' + id);
+  }
+
+  postReview(review: Review): Observable<Review> {
+    return this.http.post<Review>(this.baseurl + 'products/reviews', review);
   }
 
 }

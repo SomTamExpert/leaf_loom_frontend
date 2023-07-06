@@ -1,0 +1,64 @@
+<a class="link-opacity-75-hover link-dark" style="cursor:pointer;" data-bs-toggle="modal"
+   data-bs-target="#exampleModal">
+  Write a Review
+</a>
+
+<div class="modal fade p-5" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content" style="background-color: #FCF7EB;">
+      <div class="modal-header">
+        <h2 class="text-center contact text-uppercase">Send us your feedback</h2>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form (ngSubmit)="onSubmit()" #reviewForm="ngForm" novalidate>
+          <div class="mb-3">
+            <input type="text" class="bg-transparent link-underline border-0 border-bottom border-black w-100 my-4"
+                   placeholder="Title" [(ngModel)]="review.title" name="title" required #titleModel="ngModel">
+            <div *ngIf="titleModel.invalid && (titleModel.dirty || titleModel.touched)" class="text-danger">
+              <div *ngIf="titleModel.errors?.['required']">Title is required.</div>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <textarea class="bg-transparent link-underline border-0 border-bottom border-black w-100 my-4"
+                      placeholder="Comment" [(ngModel)]="review.comment" name="comment" required
+                      #commentModel="ngModel"></textarea>
+            <div *ngIf="commentModel.invalid && (commentModel.dirty || commentModel.touched)" class="text-danger">
+              <div *ngIf="commentModel.errors?.['required']">Comment is required.</div>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <input type="text" class="bg-transparent link-underline border-0 border-bottom border-black w-100 my-4"
+                   placeholder="Name" [(ngModel)]="review.author" name="author" required #authorModel="ngModel">
+            <div *ngIf="authorModel.invalid && (authorModel.dirty || authorModel.touched)" class="text-danger">
+              <div *ngIf="authorModel.errors?.['required']">Name is required.</div>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <app-image-upload (filesInputChanged)="currentFiles = $event"></app-image-upload>
+          </div>
+
+          <div class="mb-4">
+            <span class="col-form-label">Rating:</span>
+            <span class="ms-3">
+              <span class="fa fa-star"
+                    *ngFor="let star of stars"
+                    [class.checked]="star <= review.rating"
+                    (click)="review.rating = star"></span>
+              </span>
+          </div>
+
+          <div class="modal-footer">
+            <button class="bg-black text-white text-uppercase py-1 px-5 mt-4" data-bs-dismiss="modal">Cancel</button>
+            <button type="submit" class="bg-black text-white text-uppercase py-1 px-5 mt-4"
+                    [disabled]="reviewForm.invalid" data-bs-dismiss="modal">Submit
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

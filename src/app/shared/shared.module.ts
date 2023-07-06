@@ -1,14 +1,15 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {PaginationModule} from 'ngx-bootstrap/pagination';
-import { PagingHeaderComponent } from './paging-header/paging-header.component';
-import { PagerComponent } from './pager/pager.component';
-
+import {PagingHeaderComponent} from './paging-header/paging-header.component';
+import {PagerComponent} from './pager/pager.component';
+import {ImageUploadComponent} from "./image-upload/image-upload.component";
 
 @NgModule({
   declarations: [
     PagingHeaderComponent,
-    PagerComponent
+    PagerComponent,
+    ImageUploadComponent
   ],
   imports: [
     CommonModule,
@@ -17,7 +18,8 @@ import { PagerComponent } from './pager/pager.component';
   exports: [
     PaginationModule,
     PagingHeaderComponent,
-    PagerComponent
+    PagerComponent,
+    ImageUploadComponent
   ]
 })
 export class SharedModule {

@@ -16,3 +16,9 @@ $form-floating-label-disabled-color : black;
 
 /* Importing Datepicker SCSS file. */
 @import "node_modules/ngx-bootstrap/datepicker/bs-datepicker";
+
+
+.small-line-height {
+  margin-bottom: 0.25rem;
+  line-height: 1.2;
+}

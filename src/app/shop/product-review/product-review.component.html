@@ -1,0 +1,50 @@
+<section class="gradient-custom fixed-height" *ngIf="reviews.length > 0">
+  <div class="container mt-5 py-5">
+    <div class="row d-flex justify-content-center">
+      <div class="col-md-12">
+        <div id="carouselDarkVariant" class="carousel slide carousel-dark" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item" *ngFor="let review of reviews; let i = index"
+                 [ngClass]="{ 'active': i === 0 }">
+              <div class="row d-flex justify-content-center">
+                <div class="col-lg-10 col-xl-8">
+                  <div class="row">
+                    <div class="col-lg-4 d-flex justify-content-center">
+                      <img src="{{review.imageUrl}}"
+                           class="shadow-1 mb-4 mb-lg-0 p-2" alt="{{review.title}}" width="150" height="150"/>
+                      <img src="{{review.imageUrl2}}"
+                           class="shadow-1 mb-4 mb-lg-0 p-2" alt="{{review.title}}" width="150" height="150"/>
+                    </div>
+                    <div class="col-8 col-md-9 col-lg-7 col-xl-8 text-center text-lg-start mx-auto mx-lg-0">
+                      <h4>{{review.author}} - {{review.title}}</h4>
+                      <p>{{review.date}}</p>
+                      <p class="mb-0 pb-3">
+                        {{review.comment}}
+                      </p>
+                      <div class="d-flex">
+                        <span *ngFor="let star of getRatingArray(review.rating)"
+                              class="fa fa-star text-black bg-transparent me-1">
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselDarkVariant"
+                  data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselDarkVariant"
+                  data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -6,7 +6,6 @@ import {ProductDetailsComponent} from "./shop/product-details/product-details.co
 import {ContactComponent} from "./contact/contact/contact.component";
 import {MasteryComponent} from "./mastery/mastery/mastery.component";
 import {OurTeamComponent} from "./our-team/our-team/our-team.component";
-import {ImprintModule} from "./imprint/imprint.module";
 import {ImprintComponent} from "./imprint/imprint/imprint.component";
 
 const routes: Routes = [
