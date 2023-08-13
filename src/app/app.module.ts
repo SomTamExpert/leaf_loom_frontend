@@ -5,15 +5,15 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NgOptimizedImage} from "@angular/common";
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {CoreModule} from "./core/core.module";
-import {ShopModule} from "./shop/shop.module";
 import {HomeModule} from "./home/home.module";
 import {ContactModule} from "./contact/contact.module";
 import {MasteryModule} from "./mastery/mastery.module";
 import {OurTeamModule} from "./our-team/our-team.module";
 import {ImprintModule} from "./imprint/imprint.module";
 import {CloudinaryModule} from "@cloudinary/ng";
+import {ErrorInterceptor} from "./core/interceptors/error.interceptor";
 
 @NgModule({
   declarations: [
@@ -26,7 +26,6 @@ import {CloudinaryModule} from "@cloudinary/ng";
     NgOptimizedImage,
     HttpClientModule,
     CoreModule,
-    ShopModule,
     HomeModule,
     ContactModule,
     MasteryModule,
@@ -34,7 +33,9 @@ import {CloudinaryModule} from "@cloudinary/ng";
     ImprintModule,
     CloudinaryModule,
   ],
-  providers: [],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
