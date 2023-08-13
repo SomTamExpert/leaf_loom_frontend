@@ -5,6 +5,8 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {Pot} from "../../shared/models/pot";
 import {ShopParams} from "../../shared/models/shopParams";
 import {Subscription} from "rxjs";
+import {BreadcrumbService} from "xng-breadcrumb";
+
 @Component({
   selector: 'app-product-details',
   templateUrl: './product-details.component.html',
@@ -20,7 +22,8 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
   randomProducts: Product[] = [];
   shopParams: ShopParams = new ShopParams();
   totalCount = 0;
-  constructor(private shopService: ShopService, private activatedRoute: ActivatedRoute, private router: Router) {
+
+  constructor(private shopService: ShopService, private activatedRoute: ActivatedRoute, private router: Router, private breadcrumbService: BreadcrumbService) {
   }
 
   public ngOnInit(): void {
@@ -33,16 +36,18 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
 
   }
 
-  private loadProduct( id: string): void {
+  private loadProduct(id: string): void {
     if (id) {
       this.shopService.getProduct(+id).subscribe(product => {
         this.product = product;
+        this.breadcrumbService.set('@productDetails', product.name);
         this.imgUrl = this.product.images.grey;
       }, error => {
         console.log(error);
       })
     }
   }
+
   private getProducts(): void {
     this.shopService.getProducts(this.shopParams).subscribe({
       next: (response) => {
@@ -66,6 +71,7 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
         console.log(error);
       })
   }
+
   public onSelectPot(color: string): void {
     this.imgUrl = this.product?.images[color];
   }
