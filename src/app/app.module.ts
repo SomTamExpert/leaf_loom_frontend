@@ -14,6 +14,7 @@ import {OurTeamModule} from "./our-team/our-team.module";
 import {ImprintModule} from "./imprint/imprint.module";
 import {CloudinaryModule} from "@cloudinary/ng";
 import {ErrorInterceptor} from "./core/interceptors/error.interceptor";
+import {LoadingInterceptor} from "./core/interceptors/loading.interceptor";
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import {ErrorInterceptor} from "./core/interceptors/error.interceptor";
     CloudinaryModule,
   ],
   providers: [
-    {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}
+    {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true}
   ],
   bootstrap: [AppComponent]
 })
