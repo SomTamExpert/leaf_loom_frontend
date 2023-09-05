@@ -24,6 +24,7 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
   totalCount = 0;
 
   constructor(private shopService: ShopService, private activatedRoute: ActivatedRoute, private router: Router, private breadcrumbService: BreadcrumbService) {
+    this.breadcrumbService.set('@productDetails', ' ');
   }
 
   public ngOnInit(): void {
